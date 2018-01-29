@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF8DDEA12012755E009A59D4 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDE992012755E009A59D4 /* MulticastDelegate.swift */; };
+		AF8DDEA22012755E009A59D4 /* LibPlacenote.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDE9B2012755E009A59D4 /* LibPlacenote.swift */; };
+		AF8DDEA42012755E009A59D4 /* FeaturePointVisualizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDE9D2012755E009A59D4 /* FeaturePointVisualizer.swift */; };
+		AF8DDEA52012755E009A59D4 /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF8DDE9E2012755E009A59D4 /* CameraManager.swift */; };
+		AF8DDEA62012755E009A59D4 /* Data.bin in Resources */ = {isa = PBXBuildFile; fileRef = AF8DDE9F2012755E009A59D4 /* Data.bin */; };
+		AF9D3E8A2012824D000ED9CD /* Placenote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF9D3E88201281DC000ED9CD /* Placenote.framework */; };
+		AF9D3E8B2012824D000ED9CD /* Placenote.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AF9D3E88201281DC000ED9CD /* Placenote.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		AF9D3E8D201BA704000ED9CD /* PlanetTexture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AF9D3E8C201BA704000ED9CD /* PlanetTexture.jpg */; };
 		AFE195CA200ECAEB00924318 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE195C9200ECAEB00924318 /* AppDelegate.swift */; };
 		AFE195CC200ECAEB00924318 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE195CB200ECAEB00924318 /* ViewController.swift */; };
 		AFE195CF200ECAEB00924318 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE195CD200ECAEB00924318 /* Main.storyboard */; };
@@ -14,7 +22,30 @@
 		AFE195D4200ECAEB00924318 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AFE195D2200ECAEB00924318 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AF8DDEA9201276EA009A59D4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AF9D3E8B2012824D000ED9CD /* Placenote.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		AF8DDE992012755E009A59D4 /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		AF8DDE9B2012755E009A59D4 /* LibPlacenote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibPlacenote.swift; sourceTree = "<group>"; };
+		AF8DDE9D2012755E009A59D4 /* FeaturePointVisualizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturePointVisualizer.swift; sourceTree = "<group>"; };
+		AF8DDE9E2012755E009A59D4 /* CameraManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		AF8DDE9F2012755E009A59D4 /* Data.bin */ = {isa = PBXFileReference; lastKnownFileType = archive.macbinary; path = Data.bin; sourceTree = "<group>"; };
+		AF8DDEA02012755E009A59D4 /* PlacenoteSDK-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlacenoteSDK-Bridging-Header.h"; sourceTree = "<group>"; };
+		AF9D3E86201280D8000ED9CD /* Placenote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Placenote.framework; path = "PlacenoteSDK-Planes/PNSDK/Placenote.framework"; sourceTree = "<group>"; };
+		AF9D3E88201281DC000ED9CD /* Placenote.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Placenote.framework; sourceTree = "<group>"; };
+		AF9D3E8C201BA704000ED9CD /* PlanetTexture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = PlanetTexture.jpg; path = Assets.xcassets/PlanetTexture.jpg; sourceTree = "<group>"; };
 		AFE195C6200ECAEA00924318 /* PlacenoteSDK-Planes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PlacenoteSDK-Planes.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE195C9200ECAEB00924318 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AFE195CB200ECAEB00924318 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -29,17 +60,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9D3E8A2012824D000ED9CD /* Placenote.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF8DDE982012755E009A59D4 /* PNSDK */ = {
+			isa = PBXGroup;
+			children = (
+				AF9D3E88201281DC000ED9CD /* Placenote.framework */,
+				AF8DDE992012755E009A59D4 /* MulticastDelegate.swift */,
+				AF8DDE9B2012755E009A59D4 /* LibPlacenote.swift */,
+				AF8DDE9D2012755E009A59D4 /* FeaturePointVisualizer.swift */,
+				AF8DDE9E2012755E009A59D4 /* CameraManager.swift */,
+				AF8DDE9F2012755E009A59D4 /* Data.bin */,
+			);
+			path = PNSDK;
+			sourceTree = "<group>";
+		};
+		AF9D3E85201280D7000ED9CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AF9D3E86201280D8000ED9CD /* Placenote.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AFE195BD200ECAEA00924318 = {
 			isa = PBXGroup;
 			children = (
 				AFE195C8200ECAEA00924318 /* PlacenoteSDK-Planes */,
 				AFE195C7200ECAEA00924318 /* Products */,
+				AF9D3E85201280D7000ED9CD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,10 +108,13 @@
 		AFE195C8200ECAEA00924318 /* PlacenoteSDK-Planes */ = {
 			isa = PBXGroup;
 			children = (
+				AF8DDEA02012755E009A59D4 /* PlacenoteSDK-Bridging-Header.h */,
+				AF8DDE982012755E009A59D4 /* PNSDK */,
 				AFE195C9200ECAEB00924318 /* AppDelegate.swift */,
 				AFE195CB200ECAEB00924318 /* ViewController.swift */,
 				AFE195CD200ECAEB00924318 /* Main.storyboard */,
 				AFE195D0200ECAEB00924318 /* Assets.xcassets */,
+				AF9D3E8C201BA704000ED9CD /* PlanetTexture.jpg */,
 				AFE195D2200ECAEB00924318 /* LaunchScreen.storyboard */,
 				AFE195D5200ECAEB00924318 /* Info.plist */,
 			);
@@ -74,6 +131,7 @@
 				AFE195C2200ECAEA00924318 /* Sources */,
 				AFE195C3200ECAEA00924318 /* Frameworks */,
 				AFE195C4200ECAEA00924318 /* Resources */,
+				AF8DDEA9201276EA009A59D4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,7 +181,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9D3E8D201BA704000ED9CD /* PlanetTexture.jpg in Resources */,
 				AFE195D4200ECAEB00924318 /* LaunchScreen.storyboard in Resources */,
+				AF8DDEA62012755E009A59D4 /* Data.bin in Resources */,
 				AFE195D1200ECAEB00924318 /* Assets.xcassets in Resources */,
 				AFE195CF200ECAEB00924318 /* Main.storyboard in Resources */,
 			);
@@ -136,8 +196,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8DDEA42012755E009A59D4 /* FeaturePointVisualizer.swift in Sources */,
 				AFE195CC200ECAEB00924318 /* ViewController.swift in Sources */,
 				AFE195CA200ECAEB00924318 /* AppDelegate.swift in Sources */,
+				AF8DDEA12012755E009A59D4 /* MulticastDelegate.swift in Sources */,
+				AF8DDEA52012755E009A59D4 /* CameraManager.swift in Sources */,
+				AF8DDEA22012755E009A59D4 /* LibPlacenote.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,10 +340,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76PMXP42RV;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlacenoteSDK-Planes/PNSDK",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PlacenoteSDK-Planes/PNSDK/Placenote.framework/Headers/";
 				INFOPLIST_FILE = "PlacenoteSDK-Planes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "vertical.PlacenoteSDK-Planes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlacenoteSDK-Planes/PlacenoteSDK-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -291,10 +363,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 76PMXP42RV;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/PlacenoteSDK-Planes/PNSDK",
+				);
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/PlacenoteSDK-Planes/PNSDK/Placenote.framework/Headers/";
 				INFOPLIST_FILE = "PlacenoteSDK-Planes/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "vertical.PlacenoteSDK-Planes";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "PlacenoteSDK-Planes/PlacenoteSDK-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

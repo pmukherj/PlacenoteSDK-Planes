@@ -9,14 +9,78 @@ import UIKit
 import SceneKit
 import ARKit
 
-class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
+class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate, PNDelegate {
 	// MARK: - IBOutlets
 
-    @IBOutlet weak var sessionInfoView: UIView!
+  @IBOutlet weak var sessionInfoView: UIView!
 	@IBOutlet weak var sessionInfoLabel: UILabel!
 	@IBOutlet weak var sceneView: ARSCNView!
+  @IBOutlet var button: UIButton!
+  
+  var shapesRendering: Bool = false
+  private var camManager: CameraManager? = nil;
 
-	// MARK: - View Life Cycle
+
+  
+  @IBAction func clickButton(_ sender: Any) {
+    
+    /*if (!shapesRendering) {
+      shapesRendering = true
+      renderSphere()
+      LibPlacenote.instance.startSession()
+      sessionInfoView.isHidden = false
+      sessionInfoLabel.text = "Mapping.."
+      button.setTitle("Save Map", for: .normal)
+    }
+    else {
+      LibPlacenote.instance.saveMap(savedCb: { (mapID: String?) -> Void in
+        print ("MapId: " + mapID!)
+        self.sessionInfoLabel.isHidden = false
+        self.sessionInfoLabel.text = "Map Saved.."
+        LibPlacenote.instance.stopSession()
+      }, uploadProgressCb: {(completed: Bool, faulted: Bool, percentage: Float) -> Void in
+        //Nothing to do here
+      })
+    }*/
+    
+    if (!shapesRendering) {
+      shapesRendering = true
+      LibPlacenote.instance.loadMap(mapId: "4bd09919-a72f-4b01-911e-d88ebf8ec63a",
+                                    downloadProgressCb: {(completed: Bool, faulted: Bool, percentage: Float) -> Void in
+                                      //Nothing to do here if this is not a new phone })
+                                      if (completed) {
+                                        LibPlacenote.instance.startSession()
+                                      }
+                                    })
+    }
+    
+  }
+  
+  func renderSphere() {
+    let geometry:SCNGeometry = SCNSphere(radius: 0.08)
+    geometry.materials.first?.diffuse.contents = "PlanetTexture.jpg"
+    let geometryNode = SCNNode(geometry: geometry)
+    geometryNode.position = SCNVector3(x:0.0, y:0.0, z:-0.3)
+    sceneView.scene.rootNode.addChildNode(geometryNode)
+    print ("added sphere")
+  }
+
+  
+  func onPose(_ outputPose: matrix_float4x4, _ arkitPose: matrix_float4x4) -> Void
+  {
+    
+    
+  }
+  
+  func onStatusChange(_ prevStatus: LibPlacenote.MappingStatus, _ currStatus: LibPlacenote.MappingStatus) -> Void
+  {
+    if prevStatus != LibPlacenote.MappingStatus.running && currStatus == LibPlacenote.MappingStatus.running {
+        renderSphere()
+        sessionInfoLabel.text = "Map Found!"
+    }
+  }
+  
+    // MARK: - View Life Cycle
 	
     /// - Tag: StartARSession
     override func viewDidAppear(_ animated: Bool) {
@@ -44,7 +108,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 
         // Set a delegate to track the number of plane anchors for providing UI feedback.
         sceneView.session.delegate = self
-        
+        LibPlacenote.instance.multiDelegate += self
         /*
          Prevent the screen from being dimmed after a while as users will likely
          have long periods of interaction without touching the screen or buttons.
@@ -53,6 +117,13 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         
         // Show debug UI to view performance metrics (e.g. frames per second).
         sceneView.showsStatistics = true
+      
+        if let camera: SCNNode = sceneView?.pointOfView {
+          camManager = CameraManager(scene: sceneView.scene, cam: camera)
+        }
+      
+        sceneView.autoenablesDefaultLighting = true
+
     }
 	
 	override func viewWillDisappear(_ animated: Bool) {
@@ -61,6 +132,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 		// Pause the view's AR session.
 		sceneView.session.pause()
 	}
+  
 	
 	// MARK: - ARSCNViewDelegate
     
@@ -126,7 +198,15 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
     func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {
         updateSessionInfoLabel(for: session.currentFrame!, trackingState: camera.trackingState)
     }
-
+  
+    //Provides a newly captured camera image and accompanying AR information to the delegate.
+    func session(_ session: ARSession, didUpdate: ARFrame) {
+      let image: CVPixelBuffer = didUpdate.capturedImage
+      let pose: matrix_float4x4 = didUpdate.camera.transform
+      if (shapesRendering) {
+        LibPlacenote.instance.setFrame(image: image, pose: pose)
+      }
+    }
     // MARK: - ARSessionObserver
 	
 	func sessionWasInterrupted(_ session: ARSession) {
@@ -176,7 +256,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
         }
 
         sessionInfoLabel.text = message
-        sessionInfoView.isHidden = message.isEmpty
+        //sessionInfoView.isHidden = message.isEmpty
     }
 
     private func resetTracking() {

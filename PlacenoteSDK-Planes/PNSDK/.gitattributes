@@ -1,0 +1,2 @@
+Data.bin filter=lfs diff=lfs merge=lfs -text
+Placenote.framework/ filter=lfs diff=lfs merge=lfs -text
