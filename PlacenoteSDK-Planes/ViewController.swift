@@ -12,11 +12,14 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
 	// MARK: - IBOutlets
 
-    @IBOutlet weak var sessionInfoView: UIView!
+  @IBOutlet weak var sessionInfoView: UIView!
 	@IBOutlet weak var sessionInfoLabel: UILabel!
 	@IBOutlet weak var sceneView: ARSCNView!
 
-	// MARK: - View Life Cycle
+  @IBAction func buttonClick(_ sender: Any) {
+    print("Button Clicked")
+  }
+  // MARK: - View Life Cycle
 	
     /// - Tag: StartARSession
     override func viewDidAppear(_ animated: Bool) {
@@ -88,7 +91,7 @@ class ViewController: UIViewController, ARSCNViewDelegate, ARSessionDelegate {
          changes in the plane anchor as plane estimation continues.
         */
         node.addChildNode(planeNode)
-	}
+    }
 
     /// - Tag: UpdateARContent
     func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
