@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PlacenoteSDK-Planes.xcodeproj">
+      location = "group:/Users/pmukherj/scratchpad/scenekit/PlacenoteSDK-Planes/PlacenoteSDK-Planes/Plane.swift">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
